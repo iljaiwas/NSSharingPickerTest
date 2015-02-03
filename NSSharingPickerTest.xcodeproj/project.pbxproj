@@ -12,6 +12,7 @@
 		4D7B4FE41A812755003D23E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B4FE31A812755003D23E2 /* Images.xcassets */; };
 		4D7B4FE71A812755003D23E2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B4FE51A812755003D23E2 /* MainMenu.xib */; };
 		4D7B4FF31A812755003D23E2 /* NSSharingPickerTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B4FF21A812755003D23E2 /* NSSharingPickerTestTests.m */; };
+		4D7B4FFD1A81280A003D23E2 /* IMG_4996.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B4FFC1A81280A003D23E2 /* IMG_4996.PNG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		4D7B4FEC1A812755003D23E2 /* NSSharingPickerTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSSharingPickerTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D7B4FF11A812755003D23E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D7B4FF21A812755003D23E2 /* NSSharingPickerTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSSharingPickerTestTests.m; sourceTree = "<group>"; };
+		4D7B4FFC1A81280A003D23E2 /* IMG_4996.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_4996.PNG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		4D7B4FDC1A812755003D23E2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4D7B4FFC1A81280A003D23E2 /* IMG_4996.PNG */,
 				4D7B4FDD1A812755003D23E2 /* Info.plist */,
 				4D7B4FE11A812755003D23E2 /* main.m */,
 			);
@@ -191,6 +194,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D7B4FFD1A81280A003D23E2 /* IMG_4996.PNG in Resources */,
 				4D7B4FE41A812755003D23E2 /* Images.xcassets in Resources */,
 				4D7B4FE71A812755003D23E2 /* MainMenu.xib in Resources */,
 			);
