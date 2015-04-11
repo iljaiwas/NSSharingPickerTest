@@ -14,53 +14,100 @@
 @property (weak) IBOutlet NSButton		*shareButton;
 @property (weak) IBOutlet NSImageView	*imageView;
 
+@property (strong) NSArray              *actionExtensionsArray;
+
 @end
 
 @implementation AppDelegate
 
+- (void)share:(NSMenuItem *)sender
+{
+    if (self.actionExtensionsArray) {
+        for (NSSharingService *service in self.actionExtensionsArray) {
+            if ([sender.title isEqualTo:service.title]) {
+                service.delegate = self;
+                NSString *path = [[NSBundle mainBundle] pathForResource:@"IMG_4996" ofType:@"PNG"];
+                NSURL *imageURL = [NSURL fileURLWithPath:path];
+                [service performWithItems:@[imageURL]];
+            }
+        }
+    }
+}
+
 - (IBAction)testSharingPicker:(id)sender
 {
-	NSSharingServicePicker *picker = [[NSSharingServicePicker alloc] initWithItems:@[[self.imageView image]]];
-	
-	[picker setValue:@(1) forKey:@"style"];
-	[picker setDelegate:self];
-	
-	[picker showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinYEdge];
+    NSSharingServicePicker *picker = [[NSSharingServicePicker alloc] initWithItems:@[[self.imageView image]]];
+    
+    [picker setValue:@(1) forKey:@"style"];
+    [picker setDelegate:self];
+    
+    [picker showRelativeToRect:[sender bounds] ofView:self.shareButton preferredEdge:NSMinYEdge];
+    
+    NSMenu *menu = [[NSMenu alloc] initWithTitle:@"Sharing"];
+    
+    for (NSSharingService *service in self.actionExtensionsArray) {
+        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:service.title action:@selector(share:) keyEquivalent:@""];
+        menuItem.image = service.image;
+        [menu addItem:menuItem];
+    }
+    
+    [menu popUpMenuPositioningItem:nil atLocation:[NSEvent mouseLocation] inView:nil];
 }
 
 - (NSArray *)sharingServicePicker:(NSSharingServicePicker *)sharingServicePicker sharingServicesForItems:(NSArray *)items proposedSharingServices:(NSArray *)proposedServices
 {
-	return proposedServices;
+    self.actionExtensionsArray = proposedServices;
+    return proposedServices;
 }
 
 - (id<NSSharingServiceDelegate>)sharingServicePicker:(NSSharingServicePicker *)sharingServicePicker delegateForSharingService:(NSSharingService *)sharingService
 {
-	return self;
+    return self;
 }
 
 - (NSRect)sharingService:(NSSharingService *)sharingService sourceFrameOnScreenForShareItem:(id <NSPasteboardWriting>)item
 {
-	if ([item isKindOfClass:[NSImage class]]) {
-		NSRect frame = [self.imageView bounds];
-		frame = [self.imageView convertRect:frame toView:nil];
-		frame = [[self.imageView window] convertRectToScreen:frame];
-		return frame;
-	}
-	return NSZeroRect;
+    NSRect frame = [self.imageView bounds];
+    frame = [self.imageView convertRect:frame toView:nil];
+    frame = [[self.imageView window] convertRectToScreen:frame];
+    return frame;
 }
 
-- (NSWindow*) sharingService:(NSSharingService *)sharingService sourceWindowForShareItems:(NSArray *)items sharingContentScope:(NSSharingContentScope *)sharingContentScope
+- (NSWindow*)sharingService:(NSSharingService *)sharingService sourceWindowForShareItems:(NSArray *)items sharingContentScope:(NSSharingContentScope *)sharingContentScope
 {
-	return self.imageView.window;
+    return self.imageView.window;
 }
 
-- (NSImage*) sharingService:(NSSharingService *)sharingService transitionImageForShareItem:(id<NSPasteboardWriting>)item contentRect:(NSRect *)contentRect	{
-	return [self.imageView image];
+- (NSImage*)sharingService:(NSSharingService *)sharingService transitionImageForShareItem:(id<NSPasteboardWriting>)item contentRect:(NSRect *)contentRect
+{
+    return [self.imageView image];
 }
 
 - (BOOL)sharingServicePicker:(NSSharingServicePicker *)sharingService shouldShowForView:(NSView*) inView
 {
-	return YES;
+    return YES;
+}
+
+- (void)sharingService:(NSSharingService *)sharingService didFailToShareItems:(NSArray *)items error:(NSError *)error
+{
+    NSLog(@"sharingService:didFailToShareItems:");
+}
+
+- (void)sharingService:(NSSharingService *)sharingService didShareItems:(NSArray *)items
+{
+    NSLog(@"sharingService:didShareItems:");
+    NSItemProvider *itemProvider = items[0];
+    
+    NSItemProviderCompletionHandler itemHandler = ^(NSData *item, NSError *error) {
+        if (error) {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        [item writeToFile:@"/tmp/IMG.PNG" atomically:NO];
+        
+        self.imageView.image = [[NSImage alloc] initWithContentsOfFile:@"/tmp/IMG.PNG"];
+    };
+    
+    [itemProvider loadItemForTypeIdentifier:[itemProvider registeredTypeIdentifiers][0] options:nil completionHandler:itemHandler];
 }
 
 @end
