@@ -13,6 +13,7 @@
 		4D7B4FE71A812755003D23E2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B4FE51A812755003D23E2 /* MainMenu.xib */; };
 		4D7B4FF31A812755003D23E2 /* NSSharingPickerTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B4FF21A812755003D23E2 /* NSSharingPickerTestTests.m */; };
 		4D7B4FFD1A81280A003D23E2 /* IMG_4996.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B4FFC1A81280A003D23E2 /* IMG_4996.PNG */; };
+		D45682351D6B5DED000FEE84 /* ShareRolloverView.m in Sources */ = {isa = PBXBuildFile; fileRef = D45682341D6B5DED000FEE84 /* ShareRolloverView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,8 @@
 		4D7B4FF11A812755003D23E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D7B4FF21A812755003D23E2 /* NSSharingPickerTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSSharingPickerTestTests.m; sourceTree = "<group>"; };
 		4D7B4FFC1A81280A003D23E2 /* IMG_4996.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_4996.PNG; sourceTree = "<group>"; };
+		D45682331D6B5DED000FEE84 /* ShareRolloverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareRolloverView.h; sourceTree = "<group>"; };
+		D45682341D6B5DED000FEE84 /* ShareRolloverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareRolloverView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,8 @@
 			children = (
 				4D7B4FDE1A812755003D23E2 /* AppDelegate.h */,
 				4D7B4FDF1A812755003D23E2 /* AppDelegate.m */,
+				D45682331D6B5DED000FEE84 /* ShareRolloverView.h */,
+				D45682341D6B5DED000FEE84 /* ShareRolloverView.m */,
 				4D7B4FE31A812755003D23E2 /* Images.xcassets */,
 				4D7B4FE51A812755003D23E2 /* MainMenu.xib */,
 				4D7B4FDC1A812755003D23E2 /* Supporting Files */,
@@ -216,6 +221,7 @@
 			files = (
 				4D7B4FE21A812755003D23E2 /* main.m in Sources */,
 				4D7B4FE01A812755003D23E2 /* AppDelegate.m in Sources */,
+				D45682351D6B5DED000FEE84 /* ShareRolloverView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +408,7 @@
 				4D7B4FF81A812755003D23E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4D7B4FF91A812755003D23E2 /* Build configuration list for PBXNativeTarget "NSSharingPickerTestTests" */ = {
 			isa = XCConfigurationList;
@@ -410,6 +417,7 @@
 				4D7B4FFB1A812755003D23E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
