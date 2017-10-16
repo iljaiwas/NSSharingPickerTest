@@ -47,9 +47,13 @@
         if (error) {
             NSLog(@"%@", error.localizedDescription);
         }
-        [item writeToFile:@"/tmp/IMG.PNG" atomically:NO];
+        NSBitmapImageRep *bitmap = [NSBitmapImageRep imageRepWithData:item];
+        NSData *data = [bitmap representationUsingType:NSPNGFileType properties:@{}];
         
-        self.imageView.image = [[NSImage alloc] initWithContentsOfFile:@"/tmp/IMG.PNG"];
+        NSError *fileWriteError;
+        if ([data writeToFile:@"/tmp/IMG.PNG" options:0 error:&fileWriteError]) {
+            self.imageView.image = [[NSImage alloc] initWithContentsOfFile:@"/tmp/IMG.PNG"];
+        }
     };
     
     [itemProvider loadItemForTypeIdentifier:[itemProvider registeredTypeIdentifiers][0] options:nil completionHandler:itemHandler];
