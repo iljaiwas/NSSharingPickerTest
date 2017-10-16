@@ -18,6 +18,8 @@
 
 @implementation AppDelegate
 
+#pragma mark - Share rollover view delegate
+
 - (NSArray *)itemsForShareRolloverView:(ShareRolloverView *)view {
     return @[[self.imageView image]];
 }
@@ -27,18 +29,42 @@
 }
 
 - (void)shareRolloverView:(ShareRolloverView *)view didShareItems:(NSArray *)items {
+    [self writeSharedItems:(NSArray *)items];
+}
+
+#pragma mark - Invoke specific sharing picker delegate
+
+- (void)invokeSpecificSharingPicker:(InvokeSpecificSharingPicker *)picker didShareItems:(NSArray *)items {
+    [self writeSharedItems:(NSArray *)items];
+}
+
+#pragma mark - Common
+
+- (void)writeSharedItems:(NSArray *)items {
     NSItemProvider *itemProvider = items[0];
     
     NSItemProviderCompletionHandler itemHandler = ^(NSData *item, NSError *error) {
         if (error) {
             NSLog(@"%@", error.localizedDescription);
         }
-        [item writeToFile:@"/tmp/IMG.PNG" atomically:NO];
+        NSBitmapImageRep *bitmap = [NSBitmapImageRep imageRepWithData:item];
+        NSData *data = [bitmap representationUsingType:NSPNGFileType properties:@{}];
         
-        self.imageView.image = [[NSImage alloc] initWithContentsOfFile:@"/tmp/IMG.PNG"];
+        NSError *fileWriteError;
+        if ([data writeToFile:@"/tmp/IMG.PNG" options:0 error:&fileWriteError]) {
+            self.imageView.image = [[NSImage alloc] initWithContentsOfFile:@"/tmp/IMG.PNG"];
+        }
     };
     
     [itemProvider loadItemForTypeIdentifier:[itemProvider registeredTypeIdentifiers][0] options:nil completionHandler:itemHandler];
+}
+
+#pragma mark - UI
+
+- (IBAction)markupClicked:(id)sender {
+    InvokeSpecificSharingPicker *invokeSpecificSharingPicker = [[InvokeSpecificSharingPicker alloc] init];
+    invokeSpecificSharingPicker.delegate = self;
+    [invokeSpecificSharingPicker invokePicker:@"Markup" onObject:self.imageView.image showRelativeToRect:NSMakeRect(0, 0, 100, 100) ofView:self.window.contentView];
 }
 
 

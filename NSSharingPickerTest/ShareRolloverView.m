@@ -7,17 +7,7 @@
 //
 
 #import "ShareRolloverView.h"
-
-@interface NSSharingServicePicker (private)
-
-@property (nonatomic) NSUInteger style;
-@property (nonatomic, strong, readonly) NSButtonCell *rolloverButtonCell;
-
-- (void)hide;
-
-- (NSRect)rectForBounds:(NSRect)bounds preferredEdge:(NSRectEdge)preferredEdge;
-
-@end
+#import "NSSharingServicePicker+Private.h"
 
 @interface ShareRolloverView () <NSSharingServiceDelegate, NSSharingServicePickerDelegate>
 

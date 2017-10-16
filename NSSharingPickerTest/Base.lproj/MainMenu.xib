@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11198.2"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -690,6 +692,21 @@
                     </customView>
                 </subviews>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="E8F2247E-8398-4F0F-A7FA-E66A40BC6ED2" autosavesConfiguration="NO" displayMode="labelOnly" sizeMode="regular" id="hlR-Lz-oS2">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="D176A504-6299-48B8-AE63-DF50CBC1C03E" label="Markup" paletteLabel="Markup" tag="-1" id="GDJ-pw-EFA">
+                        <connections>
+                            <action selector="markupClicked:" target="Voe-Tx-rLC" id="eOq-5k-ade"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="sgs-b4-Dp1"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Vkm-UJ-8QN"/>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="Vkm-UJ-8QN"/>
+                    <toolbarItem reference="GDJ-pw-EFA"/>
+                </defaultToolbarItems>
+            </toolbar>
         </window>
     </objects>
     <resources>
