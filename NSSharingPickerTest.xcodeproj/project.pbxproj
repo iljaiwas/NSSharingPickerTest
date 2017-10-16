@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03E208DD1F94A4C4000B553E /* InvokeSpecificSharingPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E208DC1F94A4C4000B553E /* InvokeSpecificSharingPicker.m */; };
 		4D7B4FE01A812755003D23E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B4FDF1A812755003D23E2 /* AppDelegate.m */; };
 		4D7B4FE21A812755003D23E2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7B4FE11A812755003D23E2 /* main.m */; };
 		4D7B4FE41A812755003D23E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D7B4FE31A812755003D23E2 /* Images.xcassets */; };
@@ -27,6 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03E208DB1F94A4C4000B553E /* InvokeSpecificSharingPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InvokeSpecificSharingPicker.h; sourceTree = "<group>"; };
+		03E208DC1F94A4C4000B553E /* InvokeSpecificSharingPicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InvokeSpecificSharingPicker.m; sourceTree = "<group>"; };
+		03E208DE1F94A8DB000B553E /* NSSharingServicePicker+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSSharingServicePicker+Private.h"; sourceTree = "<group>"; };
 		4D7B4FD91A812755003D23E2 /* NSSharingPickerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSSharingPickerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D7B4FDD1A812755003D23E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D7B4FDE1A812755003D23E2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,8 +87,11 @@
 			children = (
 				4D7B4FDE1A812755003D23E2 /* AppDelegate.h */,
 				4D7B4FDF1A812755003D23E2 /* AppDelegate.m */,
+				03E208DB1F94A4C4000B553E /* InvokeSpecificSharingPicker.h */,
+				03E208DC1F94A4C4000B553E /* InvokeSpecificSharingPicker.m */,
 				D45682331D6B5DED000FEE84 /* ShareRolloverView.h */,
 				D45682341D6B5DED000FEE84 /* ShareRolloverView.m */,
+				03E208DE1F94A8DB000B553E /* NSSharingServicePicker+Private.h */,
 				4D7B4FE31A812755003D23E2 /* Images.xcassets */,
 				4D7B4FE51A812755003D23E2 /* MainMenu.xib */,
 				4D7B4FDC1A812755003D23E2 /* Supporting Files */,
@@ -219,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03E208DD1F94A4C4000B553E /* InvokeSpecificSharingPicker.m in Sources */,
 				4D7B4FE21A812755003D23E2 /* main.m in Sources */,
 				4D7B4FE01A812755003D23E2 /* AppDelegate.m in Sources */,
 				D45682351D6B5DED000FEE84 /* ShareRolloverView.m in Sources */,

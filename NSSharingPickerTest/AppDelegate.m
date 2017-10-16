@@ -18,6 +18,8 @@
 
 @implementation AppDelegate
 
+#pragma mark - Share rollover view delegate
+
 - (NSArray *)itemsForShareRolloverView:(ShareRolloverView *)view {
     return @[[self.imageView image]];
 }
@@ -27,6 +29,18 @@
 }
 
 - (void)shareRolloverView:(ShareRolloverView *)view didShareItems:(NSArray *)items {
+    [self writeSharedItems:(NSArray *)items];
+}
+
+#pragma mark - Invoke specific sharing picker delegate
+
+- (void)invokeSpecificSharingPicker:(InvokeSpecificSharingPicker *)picker didShareItems:(NSArray *)items {
+    [self writeSharedItems:(NSArray *)items];
+}
+
+#pragma mark - Common
+
+- (void)writeSharedItems:(NSArray *)items {
     NSItemProvider *itemProvider = items[0];
     
     NSItemProviderCompletionHandler itemHandler = ^(NSData *item, NSError *error) {
@@ -39,6 +53,14 @@
     };
     
     [itemProvider loadItemForTypeIdentifier:[itemProvider registeredTypeIdentifiers][0] options:nil completionHandler:itemHandler];
+}
+
+#pragma mark - UI
+
+- (IBAction)markupClicked:(id)sender {
+    InvokeSpecificSharingPicker *invokeSpecificSharingPicker = [[InvokeSpecificSharingPicker alloc] init];
+    invokeSpecificSharingPicker.delegate = self;
+    [invokeSpecificSharingPicker invokePicker:@"Markup" onObject:self.imageView.image showRelativeToRect:NSMakeRect(0, 0, 100, 100) ofView:self.window.contentView];
 }
 
 
